@@ -18,14 +18,13 @@
         text: "Estiramiento profundo y movilidad para soltar tensión y ganar amplitud." }
     ],
 
-    // Horario semanal (1 = lunes ... 6 = sábado). Cada clase: [hora, id de clase]
+    // Horario semanal (1 = lunes ... 4 = jueves). El estudio abre lunes a jueves de 8:00 a 12:00.
+    // Cada clase: [hora, id de clase]. Las horas de cada clase son de EJEMPLO.
     week: {
-      1: [["06:30", "esencial"], ["18:00", "esencial"], ["19:15", "sculpt"]],
-      2: [["07:00", "stretch"], ["18:00", "sculpt"]],
-      3: [["06:30", "esencial"], ["18:00", "esencial"], ["19:15", "stretch"]],
-      4: [["07:00", "sculpt"], ["18:00", "esencial"]],
-      5: [["06:30", "esencial"], ["17:30", "stretch"]],
-      6: [["08:00", "esencial"], ["09:15", "sculpt"]]
+      1: [["08:00", "esencial"], ["09:15", "sculpt"], ["10:30", "stretch"]],
+      2: [["08:00", "esencial"], ["09:15", "stretch"], ["10:30", "esencial"]],
+      3: [["08:00", "sculpt"], ["09:15", "esencial"], ["10:30", "stretch"]],
+      4: [["08:00", "esencial"], ["09:15", "sculpt"], ["10:30", "esencial"]]
     },
 
     plans: [
@@ -131,6 +130,7 @@
   var weekHtml = "";
   for (var d = 1; d <= 6; d++) {
     var list = CONFIG.week[d] || [];
+    if (!list.length) continue; // solo los días que abre el estudio
     weekHtml += '<div class="day" role="row"><h3 role="columnheader">' + DAY_LONG[d] + '</h3>' +
       list.map(function (s) {
         var c = classById[s[1]];
@@ -205,8 +205,13 @@
   var today = new Date();
   for (var k = 0; k < CONFIG.daysAhead; k++) {
     (function (dt) {
-      var slots = CONFIG.week[dt.getDay()];
-      if (!slots || !slots.length) return;
+      var slots = CONFIG.week[dt.getDay()] || [];
+      // Hoy: solo las clases que aún no empiezan (con 30 min de margen)
+      if (iso(dt) === iso(today)) {
+        var now = today.getHours() * 60 + today.getMinutes() + 30;
+        slots = slots.filter(function (s) { var hm = s[0].split(":"); return +hm[0] * 60 + +hm[1] >= now; });
+      }
+      if (!slots.length) return;
       var label = DAY[dt.getDay()] + " " + dt.getDate() + " " + MONTH[dt.getMonth()];
       daysEl.appendChild(chip(DAY[dt.getDay()] + "<small>" + dt.getDate() + " " + MONTH[dt.getMonth()] + "</small>", function (b) {
         picked.date = iso(dt); picked.label = label; select(daysEl, b); showTimes(slots);

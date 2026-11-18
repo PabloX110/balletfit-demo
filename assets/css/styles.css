@@ -151,7 +151,7 @@ p { margin: 0; }
 
 /* Horario */
 .schedule { background: var(--white); }
-.week { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.week { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .day { background: var(--blush); border-radius: 18px; padding: 16px 12px; min-width: 0; }
 .day h3 { font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; color: var(--mauve-deep); text-align: center; margin-bottom: 12px; }
 .slot { background: #fff; border-radius: 12px; padding: 10px 12px; margin-bottom: 8px; border: 1px solid transparent; transition: border-color .2s; }
@@ -302,7 +302,7 @@ p { margin: 0; }
   .top__nav a::after { display: none; }
   .top__menu { display: block; }
   .top__actions { margin-left: auto; }
-  .week { grid-template-columns: repeat(3, 1fr); }
+  .week { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 860px) {
