@@ -27,15 +27,14 @@ body.is-intro { overflow: hidden; }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 h1, h2, h3, h4 { margin: 0; line-height: 1.12; }
-h1, h2 { font-family: var(--serif); font-weight: 600; letter-spacing: -.01em; }
-h1 em, h2 em { font-style: italic; font-weight: 500; color: var(--mauve-deep); }
+h1, h2 { font-family: var(--serif); font-weight: 600; letter-spacing: -.02em; text-wrap: balance; }
+h1 em, h2 em { font-style: italic; font-weight: 600; color: var(--mauve-deep); letter-spacing: -.01em; }
 p { margin: 0; }
 
 .skip-link { position: absolute; left: -999px; top: 8px; background: var(--ink); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 100; }
 .skip-link:focus { left: 12px; }
 :focus-visible { outline: 3px solid var(--mauve-deep); outline-offset: 3px; border-radius: 6px; }
 
-.eyebrow { font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--mauve-deep); margin-bottom: 14px; }
 .lead { font-size: 1.15rem; color: var(--muted); max-width: 34em; }
 
 /* ---------- Botones ---------- */
@@ -96,7 +95,7 @@ p { margin: 0; }
 
 /* ---------- Hero ---------- */
 .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(24px, 5vw, 72px); align-items: center; min-height: calc(100svh - 72px); padding: 40px clamp(18px, 6vw, 96px) 72px; }
-.hero h1 { font-size: clamp(2.8rem, 6.2vw, 5.4rem); margin-bottom: 22px; }
+.hero h1 { font-size: clamp(3.3rem, 7vw, 6rem); font-weight: 700; line-height: .94; letter-spacing: -.03em; margin-bottom: 28px; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 34px 0 40px; }
 .hero__facts { list-style: none; padding: 0; margin: 0; display: flex; gap: 36px; flex-wrap: wrap; }
 .hero__facts li { display: flex; flex-direction: column; }
@@ -117,9 +116,9 @@ p { margin: 0; }
 
 /* ---------- Secciones ---------- */
 .section { padding: clamp(72px, 10vw, 128px) clamp(18px, 6vw, 96px); }
-.section__head { max-width: 640px; margin-bottom: 48px; }
-.section__head h2 { font-size: clamp(2.2rem, 4.4vw, 3.4rem); margin-bottom: 16px; }
-.section__head p:not(.eyebrow) { color: var(--muted); font-size: 1.06rem; }
+.section__head { margin-bottom: clamp(44px, 6vw, 72px); }
+.section__head h2 { font-size: clamp(2.8rem, 6.6vw, 5.6rem); font-weight: 700; line-height: .96; letter-spacing: -.03em; max-width: 12ch; margin-bottom: 24px; }
+.section__head p { color: var(--muted); font-size: 1.1rem; max-width: 36em; }
 
 /* Método */
 .method { background: var(--white); }
@@ -133,7 +132,7 @@ p { margin: 0; }
 .coach__photo { aspect-ratio: 4 / 5; border-radius: 160px 160px var(--radius) var(--radius); background: linear-gradient(160deg, var(--rose), #dcc3cf); display: grid; place-items: center; position: relative; overflow: hidden; }
 .coach__photo img { width: 42%; opacity: .55; }
 .coach__photo span { position: absolute; bottom: 16px; font-size: .8rem; font-weight: 700; color: var(--mauve-deep); background: rgba(255, 255, 255, .7); padding: 4px 12px; border-radius: 999px; }
-.coach h3 { font-family: var(--serif); font-size: 2.4rem; font-weight: 600; margin-bottom: 14px; }
+.coach h3 { font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 700; line-height: .95; letter-spacing: -.03em; margin-bottom: 18px; }
 .coach p { color: var(--muted); max-width: 36em; }
 .coach__note { margin-top: 14px; font-size: .9rem; font-style: italic; }
 
@@ -219,9 +218,9 @@ p { margin: 0; }
 
 /* Clase de prueba (base) */
 .book-wrap { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(28px, 5vw, 72px); align-items: start; background: linear-gradient(180deg, var(--blush), var(--rose)); }
-.book-intro h2 { font-size: clamp(2.1rem, 3.6vw, 3rem); margin-bottom: 18px; }
+.book-intro h2 { font-size: clamp(2.7rem, 5vw, 4.4rem); font-weight: 700; line-height: .96; letter-spacing: -.03em; margin-bottom: 22px; }
 .book { min-width: 0; }
-.book-intro > p:not(.eyebrow) { color: var(--muted); font-size: 1.06rem; }
+.book-intro > p { color: var(--muted); font-size: 1.06rem; }
 .checks { list-style: none; padding: 0; margin: 28px 0 0; }
 .checks li { padding: 8px 0 8px 32px; position: relative; font-weight: 700; }
 .checks li::before { content: ""; position: absolute; left: 0; top: 11px; width: 20px; height: 20px; border-radius: 50%; background: var(--mauve); }
