@@ -87,8 +87,11 @@
         io.unobserve(en.target);
       });
     }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-    items.forEach(function (el, i) {
-      el.style.transitionDelay = (el.parentElement && el.parentElement.children.length > 1 ? (i % 4) * 70 : 0) + "ms";
+    items.forEach(function (el) {
+      // Cascada entre hermanos (tarjetas, pasos): 60 ms cada uno, máximo 4.
+      // Va en --d para que solo retrase la aparición, no el hover.
+      var sibs = el.parentElement ? Array.prototype.filter.call(el.parentElement.children, function (c) { return c.classList.contains("reveal"); }) : [];
+      el.style.setProperty("--d", (sibs.length > 1 ? Math.min(sibs.indexOf(el), 4) * 60 : 0) + "ms");
       io.observe(el);
     });
   }

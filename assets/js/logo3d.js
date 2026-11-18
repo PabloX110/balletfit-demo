@@ -182,6 +182,7 @@ class Logo3D {
     const el = this.renderer.domElement;
     let down = false, lastX = 0;
     el.addEventListener("pointerdown", (e) => {
+      if (down) return; // ignora un segundo dedo a mitad del giro
       down = true; lastX = e.clientX; this.vel = 0;
       el.setPointerCapture(e.pointerId);
       this.host.classList.add("is-grabbing");
