@@ -327,3 +327,26 @@ p { margin: 0; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ---------- Logo 3D (three.js; si no carga se queda el SVG) ---------- */
+.logo3d { position: absolute; opacity: 0; transition: opacity .6s var(--ease); pointer-events: none; }
+.logo3d.is-ready { opacity: 1; }
+.logo3d canvas { display: block; width: 100%; height: 100%; }
+/* Intro: el símbolo dibujado en 2D se cambia por el 3D y da una vuelta */
+.intro__3d { left: 0; top: 0; width: 22%; aspect-ratio: 330 / 440; opacity: 0; transition: opacity .35s var(--ease); }
+.intro__3d.is-ready { opacity: 0; }
+.intro.is-3d .intro__3d { opacity: 1; }
+.intro__logo #bf-body, .intro__logo #bf-arm, .intro__logo #bf-head { transition: opacity .35s var(--ease); }
+.intro.is-3d .intro__logo #bf-body, .intro.is-3d .intro__logo #bf-arm, .intro.is-3d .intro__logo #bf-head { opacity: 0; }
+/* Inicio: pieza central que se puede girar */
+.hero__3d { inset: 0; pointer-events: auto; cursor: grab; touch-action: pan-y; }
+.hero__3d.is-grabbing { cursor: grabbing; }
+.hero__art.has-3d .hero__mark { opacity: 0; transition: opacity .6s var(--ease); }
+.hero__art .hero__card { z-index: 1; pointer-events: none; }
+/* El método: marcador mientras llega la foto de Andrea */
+.coach__3d { inset: 0; }
+.coach__photo.has-3d img { opacity: 0; }
+.coach__photo span { z-index: 1; }
+
+/* El aro que gira del inicio no debe crear scroll horizontal */
+html, body { overflow-x: clip; }
